@@ -77,12 +77,20 @@ int main(){
         min_t = min(min_t,t);
     }
 
-    cout<<min_t;
+    cout<<min_t<<endl;
 
+    Orlin orlin(&oracle);
 
     //vector<int> *del = oracle.getBase();
     //cout<<"Oracle"<<del;
+    vector<int> result = orlin.runOrlinVec();
+    cout << "SIZE OF RESULT:  " << result.size() << endl;
     
+    for (vector<int>::iterator it = result.begin(); it != result.end(); it++) {
+        cout << *it << endl;
+    }
+    // double min_t2 = oracle.oracle(result);
+    // cout<<"Orlin Minimum = "<<min_t2;    
 
     return 0;
 

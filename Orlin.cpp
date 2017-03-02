@@ -30,7 +30,39 @@ Orlin::Orlin(SetFunction *sf)
 {
     this->sf = sf;
     int n = sf->getBaseSize();
-    for (int i = 0; i < n + 1; ++i) {
-        vector<bool> v((unsigned long) n + 1, false);
+}
+
+
+void edmonds(vector<double> &out, vector<int> &o) 
+{
+    string set_str(o.size(), '0');
+    string zero_str = set_str;
+    out = vector<double>(o.size());
+    set_str[o[0]] = '1';
+    out[o[0]] = globalSF->oracle(set_str) - globalSF->oracle(zero_str);
+    double prev = out[o[0]];
+    for (int i = 1; i < out.size(); i++) {
+        set_str[o[i]] = '1';
+        double t = globalSF->oracle(set_str) - globalSF->oracle(zero_str);
+        out[o[i]] = t - prev;
+        prev = t;
     }
 }
+
+string Orlin::runOrlin()
+{
+
+    return "101";
+
+
+}
+
+vector<int> Orlin::runOrlinVec()
+{
+    vector<int> retval;
+    string ret = this->runOrlin();
+    for (int i = 0; i < ret.size(); i++) if (ret[i] == '1') retval.push_back(this->sf->getIndex(i));
+    return retval;
+}
+
+
