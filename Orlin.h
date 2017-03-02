@@ -266,10 +266,10 @@ public:
 };
 
 class Orlin{
-    
+
     private:
         SetFunction *sf;
-
+        
     Orlin(){
         
         sf = NULL;

@@ -61,8 +61,25 @@ int main(){
     //cin>>input;
     
     for(int i = 0 ; i < input ;i++) {s.push_back(i+1);y.push_back(arr[i%5]);}
-    cout<<y;
+    cout<<y<<endl;
     MySetFunction oracle(s);
+    
+
+
+    double min_t=1e11,t = 1e11;
+    for (int i = 0; i < (1 << (s.size())); i++) {
+        vector<int> temp;
+        for (int j = 0; j < s.size(); j++) {
+            if (i & (1 << j)) temp.push_back(s[j]);
+        }
+        cout<<"Set "<<temp<<" = "<<oracle.oracle(temp)<<endl;
+        t=oracle.oracle(temp);
+        min_t = min(min_t,t);
+    }
+
+    cout<<min_t;
+
+
     //vector<int> *del = oracle.getBase();
     //cout<<"Oracle"<<del;
     
