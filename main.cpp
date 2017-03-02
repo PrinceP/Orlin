@@ -63,6 +63,9 @@ int main(){
     for(int i = 0 ; i < input ;i++) {s.push_back(i+1);y.push_back(arr[i%5]);}
     cout<<y;
     MySetFunction oracle(s);
+    //vector<int> *del = oracle.getBase();
+    //cout<<"Oracle"<<del;
+    
 
     return 0;
 

@@ -266,7 +266,7 @@ public:
 };
 
 class Orlin{
-
+    
     private:
         SetFunction *sf;
 

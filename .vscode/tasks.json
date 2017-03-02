@@ -2,8 +2,21 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "0.1.0",
+    "tasks":[ 
+    {
+    "taskName": "compile",
     "command": "g++",
     "isShellCommand": true,
-    "args": ["main.cpp"],
-    "showOutput": "always"
+    "args": ["-Wall","main.cpp","Orlin.h","Orlin.cpp","SetFunction.h","SetFunction.cpp"],
+    "showOutput": "always",
+    "isBuildCommand": true
+    },
+    {
+    "taskName":"run",
+    "command": "./a.out",
+    "isShellCommand": true,
+    "args": [],
+    "showOutput": "always" 
+    }
+    ]
 }
