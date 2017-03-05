@@ -7,7 +7,7 @@
     "taskName": "compile",
     "command": "g++",
     "isShellCommand": true,
-    "args": ["-Wall","main.cpp","Orlin.h","Orlin.cpp","SetFunction.h","SetFunction.cpp"],
+    "args": ["-Wall","-std=c++11","main.cpp","Orlin.h","Orlin.cpp","SetFunction.h","SetFunction.cpp"],
     "showOutput": "always",
     "isBuildCommand": true
     },

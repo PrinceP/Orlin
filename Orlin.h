@@ -15,6 +15,10 @@
 
 using namespace std;
 
+
+
+
+
 /*
     Function: Finds the extreme base corresponding to the ordering
     @params: o -> Ordering as vector<int>
@@ -29,6 +33,132 @@ void edmonds(vector<double> &out, vector<int> &o);
 */
 template<class T>
 ostream &operator<<(ostream &out, vector<T> v);
+
+
+
+/*
+    Function: Operator Overload (*)
+    @params: k-> double, base-> vector
+    @return: scalar multiplication k*v
+*/
+template<class T>
+vector<T> operator*(const double &k, const vector<T> &base) {
+    vector<T> v(base);
+    int i = 0;
+    while (i < v.size()) {
+        v[i] = v[i] * k;
+        i++;
+    }
+    return v;
+}
+
+/*
+    Function: Operator Overload (*)
+    @params: k-> double, base-> vector
+    @return: scalar multiplication v*k
+*/
+template<class T>
+vector<T> operator*(const vector<T> &base, const double &k) {
+    return k * base;
+}
+
+/*
+    Function: Operator Overload (*=)
+    @params: k-> double, base-> vector
+    @return: base = base*k 
+*/
+template<class T>
+void operator*=(vector<T> &base, const double &k) {
+    for (int i = 0; i < base.size(); i++) {
+        base[i] *= k;
+    }
+}
+
+/*
+    Function: Operator Overload (+)
+    @params: a -> vector, b-> vector
+    @return: component wise addition a+b
+*/
+template<class T>
+vector<T> operator+(vector<T> &a, const vector<T> &b) {
+    vector<T> v(a.size(), 0);
+    int i = 0;
+    while (i < v.size()) {
+        v[i] = a[i] + b[i];
+        i++;
+    }
+    return v;
+}
+
+/*
+    Function: Operator Overload (+=)
+    @params: a -> vector, b-> vector
+    @return: a = a+b
+*/
+template<class T>
+void operator+=(vector<T> &a, const vector<T> &b) {
+    int i = 0;
+    while (i < a.size()) {
+        a[i] += b[i];
+        i++;
+    }
+}
+
+/*
+    Function: Operator Overload (-)
+    @params: a -> vector, b-> vector
+    @return: component wise addition a-b
+*/
+template<class T>
+vector<T> operator-(vector<T> &a, const vector<T> &b) {
+    vector<T> v(a.size(), 0);
+    int i = 0;
+    while (i < v.size()) {
+        v[i] = a[i] - b[i];
+        i++;
+    }
+    return v;
+}
+
+/*
+    Function: Operator Overload (-=)
+    @params: a -> vector, b-> vector
+    @return: a = a-b
+*/
+template<class T>
+void operator-=(vector<T> &a, const vector<T> &b) {
+    int i = 0;
+    while (i < a.size()) {
+        a[i] -= b[i];
+        i++;
+    }
+}
+
+/*
+    Function: Operator Overload (*)
+    @params: a -> vector, b-> vector
+    @return: component wise multiplication a*b
+*/
+template<class T>
+T operator*(vector<T> &a, const vector<T> &b) {
+    T ret;
+    int i = 0;
+    while (i < a.size()) {
+        ret += (a[i] * b[i]);
+        i++;
+    }
+    return ret;
+}
+
+/*
+    Function: Operator Overload (==)
+    @params: a -> vector, b-> vector
+    @return: bool -> component wise equality
+*/
+bool operator==(const vector<double> &a, const vector<double> &b);
+
+
+
 
 
 
@@ -144,6 +274,7 @@ public:
         this->ExtremeBase.clear();
     }
 };
+
 
 
 /*
@@ -393,16 +524,18 @@ public:
 };
 
 
+    
 
 
 
 
 class Orlin{
-
+    private:
+           
     public:    
-        
+         vector<int> randomOrdering(int n);
+       
         SetFunction *sf;
-
     Orlin(){
         sf = NULL;
     };

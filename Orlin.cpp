@@ -24,6 +24,14 @@ ostream &operator<<(ostream &out, const Ordering &o)
 }
 
 
+vector<int> Orlin::randomOrdering(int n) {
+    srand((unsigned int) time(0));
+    vector<int> v;
+    for (int i = 1; i <= n; i++) v.push_back(i);
+    random_shuffle(v.begin(), v.end());
+    return v;
+}
+
 SetFunction *globalSF;
 
 Orlin::Orlin(SetFunction *sf)
@@ -33,8 +41,7 @@ Orlin::Orlin(SetFunction *sf)
 }
 
 
-void edmonds(vector<double> &out, vector<int> &o) 
-{
+void edmonds(vector<double> &out, vector<int> &o) {
     string set_str(o.size(), '0');
     string zero_str = set_str;
     out = vector<double>(o.size());
@@ -49,12 +56,29 @@ void edmonds(vector<double> &out, vector<int> &o)
     }
 }
 
+
 string Orlin::runOrlin()
-{
+{   
+    globalSF = this->sf;
+    long long it = 0;
+    int n = sf->getBaseSize();
+    vector<int> d((unsigned long) n);
+    auto ordering = randomOrdering(n);
+    //cout<<ordering;
+    
+    while(1)
+    {
 
+
+        
+        
+        break;
+    }
+
+
+
+        
     return "101";
-
-
 }
 
 vector<int> Orlin::runOrlinVec()
