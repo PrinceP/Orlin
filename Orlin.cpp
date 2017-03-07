@@ -62,24 +62,33 @@ string Orlin::runOrlin()
     globalSF = this->sf;
     long long it = 0;
     int n = sf->getBaseSize();
+
+    // Intial W = V
+    string set_str(n, '1');
+    string res = set_str;
+    
     vector<int> d((unsigned long) n);
     auto ordering = randomOrdering(n);
-    //cout<<ordering;
-    
-    while(1)
-    {
+    Ordering orderingObject(ordering);
+    HyperPoint x;
+    x.addOrdering(orderingObject, 1);
+    while (1) {
+       // Commpute the eta
 
+       //If eta eta < 1/n 
 
-        
-        
-        break;
+       //Compute the new linear orderring
+
+       //Update the push procedure
+
+       //
+
     }
-
-
-
-        
-    return "101";
-}
+    string retval(n, '0');
+    for (int i = 0; i < n; i++) if (1) retval[i] = '1';
+    return retval;
+    
+    }
 
 vector<int> Orlin::runOrlinVec()
 {
