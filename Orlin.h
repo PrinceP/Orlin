@@ -161,14 +161,15 @@ bool operator==(const vector<double> &a, const vector<double> &b);
 
 
 
-
 /*
-    Class: Ordering -> object for keeping the integer ordering and the extreme base corresponding to that ordering with the current oracle function.
+    Class: Ordering -> object for keeping the integer ordering and the extreme base corresponding to that ordering with the current oracle function with distance label.
     @members: ordering-> vector of int, ExtremeBase -> vector of double
 */
 class Ordering {
     vector<int> ordering;
     vector<double> ExtremeBase;
+    vector<int> distance;
+
 public:
     
     /*
@@ -186,6 +187,7 @@ public:
     Ordering() {
         this->ordering = vector<int>();
         this->ExtremeBase = vector<double>();
+        this->distance = vector<int>();
     }
 
     /*
@@ -195,6 +197,7 @@ public:
     */
     Ordering(const vector<int> &o) {
         this->ordering = vector<int>(o);
+        this->distance = vector<int>(o.size(),0);
         fill(this->ExtremeBase.begin(), this->ExtremeBase.end(), 0.0);
         edmonds(this->ExtremeBase, this->ordering);
     }
@@ -206,6 +209,7 @@ public:
     */
     Ordering(const Ordering &o) {
         this->ordering = vector<int>(o.getOrdering());
+        this->distance = vector<int>(o.getDistance());
         fill(this->ExtremeBase.begin(), this->ExtremeBase.end(), 0.0);
         edmonds(this->ExtremeBase, this->ordering);
     }
@@ -224,6 +228,7 @@ public:
             copy(other.ordering.begin(), other.ordering.end(), back_inserter(this->ordering));
             //this->ordering other.ordering;
             this->ExtremeBase = other.ExtremeBase;
+            this->distance = other.distance;
         }
         return *this;
     }
@@ -235,6 +240,15 @@ public:
         @return: vector of int
     */
     vector<int> getOrdering() const { return this->ordering; }
+
+    /*
+        Function: Getter for member distance
+        @params: None
+        @return: vector of int
+    */
+    vector<int> getDistance() const { return this->distance; }
+
+
 
     /*
         Function: Getter for member ExtremeBase
@@ -272,10 +286,9 @@ public:
     ~Ordering() {
         this->ordering.clear();
         this->ExtremeBase.clear();
+        this->distance.clear();
     }
 };
-
-
 
 /*
     Class: HyperPoint -> object for keeping a hyperPoint in the base polyhedron of the current oracle function. Also stores the representation of the hyperpoint in terms of extreme bases
@@ -283,6 +296,7 @@ public:
     n: dimension of the hyperpoint
 */
 class HyperPoint {
+
     vector<double> representation;
     vector<pair<Ordering, double>> orderings;
     int n;
@@ -471,6 +485,16 @@ public:
         return this->representation;
     }
 
+
+    /*
+        Function: Getter for member distance
+        @params: None.
+        @return: vector of int
+    */
+    // vector<int> getDistance() const {
+    //     return this->distance;
+    // }
+
     /*
         Function: Getter for member orderings
         @params: None.
@@ -522,10 +546,6 @@ public:
         this->orderings.clear();
     }
 };
-
-
-    
-
 
 
 

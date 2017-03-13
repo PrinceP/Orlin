@@ -19,20 +19,35 @@ ostream &operator<<(ostream &out, const Ordering &o)
 {
     out << "Ordering ";
     out << o.getOrdering() << " at ";
-    out << o.getBase() << endl;
+    out << o.getBase() << " with ";
+    out << o.getDistance() << endl;
     return out;
 }
 
 
 vector<int> Orlin::randomOrdering(int n) {
-    srand((unsigned int) time(0));
+    //srand((unsigned int) time(0));
     vector<int> v;
-    for (int i = 1; i <= n; i++) v.push_back(i);
+    for (int i = 0; i < n; i++) v.push_back(i);
     random_shuffle(v.begin(), v.end());
     return v;
 }
 
+
+
 SetFunction *globalSF;
+
+ostream &operator<<(ostream &out, HyperPoint &v) {
+    out << "HyperPoint: ";
+    out << v.getRepresentation() << endl;
+    // out << "Distance - :";
+    // out << v.getDistance() << endl;
+    out << "Components: <" << v.getOrderings().size() << ">" << endl;
+    for (pair<Ordering, double> p : v.getOrderings()) {
+        out << p.second << "\t" << p.first << endl;
+    }
+    return out;
+}
 
 Orlin::Orlin(SetFunction *sf)
 {
@@ -69,26 +84,25 @@ string Orlin::runOrlin()
     
     vector<int> d((unsigned long) n);
     auto ordering = randomOrdering(n);
+    auto ordering2 = randomOrdering(n);
+    
     Ordering orderingObject(ordering);
+    Ordering orderingObject2(ordering2);
+    
     HyperPoint x;
     x.addOrdering(orderingObject, 1);
-    while (1) {
-       // Commpute the eta
+    x.addOrdering(orderingObject2, 2);
+    
+    cout<<x;
 
-       //If eta eta < 1/n 
 
-       //Compute the new linear orderring
 
-       //Update the push procedure
 
-       //
-
-    }
     string retval(n, '0');
     for (int i = 0; i < n; i++) if (1) retval[i] = '1';
     return retval;
     
-    }
+}
 
 vector<int> Orlin::runOrlinVec()
 {

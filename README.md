@@ -16,5 +16,5 @@ Basic Implementation of Orlin and iwata algorithm
 
 # References
 
-[Orlin Iwata paper](https://scholar.google.co.in/scholar?q=Orlin+iwata+submodular+minimization&hl=en&as_sdt=0&as_vis=1&oi=scholart&sa=X&ved=0ahUKEwie6q33l-_RAhUHPo8KHbeEBjMQgQMIGjAA)
+[Orlin Iwata paper](http://delivery.acm.org/10.1145/1500000/1496903/p1230-iwata.pdf?ip=103.25.231.102&id=1496903&acc=ACTIVE%20SERVICE&key=045416EF4DDA69D9%2E9B70FA1BECDE5FE7%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&CFID=903039426&CFTOKEN=58613694&__acm__=1488860880_213ade8128f9eba60fcc6662feb2e82c)
 [Orlin Iwata Lecture](http://people.math.gatech.edu/~tetali/LINKS/IWATA/SFM.pdf)
