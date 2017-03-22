@@ -5,8 +5,8 @@ Basic Implementation of Orlin and iwata algorithm
 # Logs
 
 1. Submodular set function implementated - |X||V-X| + f'(X)
-2. Generic framework - implementated.
-3. Distance label -implementated. 
+2. Generic framework - implemented.
+3. Distance label -implemented. 
 
 #Todos 
 
